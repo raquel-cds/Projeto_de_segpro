@@ -9,7 +9,7 @@ z = 1
 
 wind = float(input("Qual é a velocidade do vento, em m/s?\n"))
 insol = str(input("Qual é o nivel de incidencia solar, Alto ou Baixo?\n")).capitalize()
-Qtm = int(input("Quanto material foi expelido, em kg?\n"))
+Qtm = float(input("Quanto material foi expelido, em kg?\n"))
 Qtm*=1000
 dist = float(input("Qual a sua distância, em uma linha reta em metros, da fonte de emissão?\n"))
 deg_puff = float(input("Qual a direção aproximada da fonte de emissão, em graus?\n"))
@@ -101,7 +101,6 @@ ax = plt.axes()
 ax.contourf(X, Y, Z, cmap='inferno')
 ax.set_xlabel('Distância(m)')
 ax.set_ylabel('Amplitude do Puff(m)')
-ax.set_zlabel('Concentração')
 ax.scatter(x_pos, y_pos, 1)
 
 # Animação do gráfico para t de 0 à 1 hora
@@ -114,7 +113,6 @@ for i in range(120):
     ax.contourf(X, Y, Z, cmap='inferno')
     ax.set_xlabel('Distância(m)')
     ax.set_ylabel('Amplitude da emissão(m)')
-    ax.set_zlabel('Concentração')
     ax.set_title(f"Concentração com base no centro de emissão\n por segundos t = {t}")
     ax.scatter(x_pos, y_pos, 1, c = "red")
 
