@@ -18,22 +18,6 @@ t = 0
 
 # transforma a direção do vento e adireção da fonte de emissão em radianos
 rad_puff = (deg_puff*np.pi)/180
-#if deg_puff == "N":
-#    deg_puff = 0
-#elif deg_puff == "Ne":
-#    deg_puff = np.pi/4
-#elif deg_puff == "E":
-#    deg_puff = np.pi/2
-#elif deg_puff == "Se":
-#    deg_puff = 3*np.pi/4
-#elif deg_puff == "S":
-#    deg_puff = np.pi
-#elif deg_puff == "So":
-#    deg_puff = 5*np.pi/4
-#elif deg_puff == "O":
-#    deg_puff = 3*np.pi/2
-#elif deg_puff == "No":
-#    deg_puff = 7*np.pi/4
 if deg_wind == "N":
     rad_wind = 0
 elif deg_wind == "Ne":
@@ -55,8 +39,8 @@ elif deg_wind == "No":
 rad = np.absolute(rad_puff - rad_wind)
 
 # posição relativa do observador
-x_pos = dist*np.sin(rad)
-y_pos = dist*np.cos(rad)
+x_pos = dist*np.cos(rad)
+y_pos = dist*np.sin(rad)
 z_pos = 0
 if rad >= np.pi/2 and dist > 50:
     print("Você está completamente seguro desta emissão!")
@@ -113,8 +97,8 @@ Z = (Qtm/(((2*np.pi)**3/2)*sig_x*sig_y*sig_z))*(np.e**(-0.5*((Y/sig_y)**2)))*\
 
 # Gráfico
 fig = plt.figure()
-ax = plt.axes(projection="3d")
-ax.plot_surface(X, Y, Z, cmap='viridis')
+ax = plt.axes()
+ax.contourf(X, Y, Z, cmap='inferno')
 ax.set_xlabel('Distância(m)')
 ax.set_ylabel('Amplitude do Puff(m)')
 ax.set_zlabel('Concentração')
@@ -127,12 +111,11 @@ for i in range(120):
         ((np.e**(-0.5*((z-Hr)/sig_z)**2))+(np.e**(-0.5*((z+Hr)/sig_z)**2)))*(np.e**\
         (-0.5*((X-u*t)/sig_x)**2))
     ax.clear()
-    ax.plot_surface(X, Y, Z, cmap='viridis')
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
+    ax.contourf(X, Y, Z, cmap='inferno')
+    ax.set_xlabel('Distância(m)')
+    ax.set_ylabel('Amplitude da emissão(m)')
     ax.set_zlabel('Concentração')
     ax.set_title(f"Concentração com base no centro de emissão\n por segundos t = {t}")
-    ax.scatter(0,0,1)
     ax.scatter(x_pos, y_pos, 1, c = "red")
 
     plt.pause(0.5) 
