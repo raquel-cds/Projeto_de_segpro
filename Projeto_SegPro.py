@@ -7,14 +7,29 @@ y = np.arange(-500, 500, 0.5)
 X, Y = np.meshgrid(x, y) #cria a grade de valores xy em z
 z = 1
 
-wind = float(input("Qual é a velocidade do vento, em m/s?\n"))
-insol = str(input("Qual é o nivel de incidencia solar, Alto ou Baixo?\n")).capitalize()
-Qtm = float(input("Quanto material foi expelido, em kg?\n"))
-Qtm*=1000
-dist = float(input("Qual a sua distância, em uma linha reta em metros, da fonte de emissão?\n"))
-deg_puff = float(input("Qual a direção aproximada da fonte de emissão, em graus?\n"))
-deg_wind = str(input("Qual a direção cardeal do vento?(N, NE, E, SE, S, SO, O, NO)\n")).capitalize()
-t = 0
+teste = str(input("usar valores de demonstração?(S/N)\n")).capitalize()
+
+
+### Função pra não ter q digitar valor toda vez q for testar o script
+if teste == "N":
+
+    wind = float(input("Qual é a velocidade do vento, em m/s?\n"))
+    insol = str(input("Qual é o nivel de incidencia solar, Alto ou Baixo?\n")).capitalize()
+    Qtm = int(input("Quanto material foi expelido, em kg?\n"))
+    Qtm*=1000
+    dist = float(input("Qual a sua distância, em uma linha reta em metros, da fonte de emissão?\n"))
+    deg_puff = float(input("Qual a direção aproximada da fonte de emissão, em graus?\n"))
+    deg_wind = str(input("Qual a direção cardeal do vento?(N, NE, E, SE, S, SO, O, NO)\n")).capitalize()
+    t = 0
+else:
+    wind = 4
+    insol = "Alto"
+    Qtm = 500000
+    dist = 2303
+    deg_puff = 187
+    deg_wind = "S"
+    t=0
+
 
 # transforma a direção do vento e adireção da fonte de emissão em radianos
 rad_puff = (deg_puff*np.pi)/180
@@ -42,7 +57,7 @@ rad = np.absolute(rad_puff - rad_wind)
 x_pos = dist*np.cos(rad)
 y_pos = dist*np.sin(rad)
 z_pos = 0
-if rad >= np.pi/2 and dist > 50:
+if (rad >= np.pi/2) and (dist > 50):
     print("Você está completamente seguro desta emissão!")
 
 
@@ -113,11 +128,11 @@ for i in range(120):
     ax.contourf(X, Y, Z, cmap='inferno')
     ax.set_xlabel('Distância(m)')
     ax.set_ylabel('Amplitude da emissão(m)')
-    ax.set_title(f"Concentração com base no centro de emissão\n por segundos t = {t}")
-    ax.scatter(x_pos, y_pos, 1, c = "red")
+    ax.set_title(f"Concentração com base no centro de emissão\n por minutos t = {t/60}")
+    ax.scatter(x_pos, y_pos, c = "white")
 
     plt.pause(0.5) 
 
 
 plt.show()
-system('cls')
+system('cls') #limpa os inputs do terminal
