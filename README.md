@@ -10,3 +10,4 @@ link: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3e3WcTBmqyRMe0
 
 link: https://www.ajdesigner.com/phpdispersion/point_space_equation.php#ajscroll (CALCULADORA)
 link: https://ingmedioambiente.blogspot.com/2014/02/tutorialpg.html (EXTRA)
+link: https://docs.python.org/pt-br/3/library/tk.html (biblioteca Tkinter)
