@@ -1,0 +1,48 @@
+Puff fonte altura Hr em relação ao solo. Coordenadas da posição da fonte no solo
+
+Q*m (kg/s) = vasão máx
+
+sigmas (m)= valores dados [depende de Est]
+
+Hr (m)= altura da fonte (tunel + valvula)
+
+u (m/s)= velocidade do vendo escalar
+
+-------------
+OBSERVAÇÕES
+
+Est = Estabilidade do AR/Tempo
+
+Tipo de gás
+
+Sempre em S/I
+
+Sempre de dia
+
+Apenas downwind = vento planar
+
+teve uma missao de GLP (gas liquefeito de pretróleo - C4)
+
+AEGP-1
+
+TWA - tabela de toxidade
+STEL - nivel de contaminação
+
+----------------
+
+1 - Concentração num certo ponto num certo tempo
+2 - Consultar se Cmax é tóxico
+3 - Informar AEGL-1 (2 ou 3)
+
+--------------------------------------
+- toxilogia ocupacional (https://eq.ufrj.br/antigo/docentes/cavazjunior/toxico.pdf)
+
+tempo de resposta: agudo ou grave
+danos: leve, moderado ou grave
+
+DL 50(mg/Kg corpóreo) ou CL 50 (mg/m²)
+
+CL 50 
+- via respiratória
+toxicidade CL 50: extrema, alta, moderada, baixa, muito baixa, relativametne atóxica
+
