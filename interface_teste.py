@@ -27,7 +27,7 @@ class Aplicacao(JanelaBase):
         self.window.mainloop()  # Inicia o loop principal da interface
 
     def botoes(self):
-        self.opcoes = ctk.CTkOptionMenu(self.window, values=["Pluma", "Puff"])
+        self.opcoes = ctk.CTkOptionMenu(self.window, values=["Puff"])
         self.opcoes.pack(pady=30, padx=30)
         self.opcoes.set("Escolha um modelo")
 
@@ -52,7 +52,7 @@ class Formulario:
             entrada.pack(expand=True, fill='x', padx=50, pady=10)
             self.entradas.append(entrada)  # Armazena cada caixa de entrada na lista
 
-    def obter_dados(self):
+    def obter_dados(self): # REFORMULAR ESTÁ PARTE COM O CÓDIGO DO MATEUS
         # Retorna uma lista com o conteúdo de cada caixa de entrada
         return [entrada.get() for entrada in self.entradas]
 
@@ -79,7 +79,7 @@ class ControladorDeCaptura:
             if self.mensagem_erro and self.mensagem_erro.winfo_exists():
                 self.mensagem_erro.destroy()  # Oculta a mensagem de erro se já estiver exibida
 
-            # Processa os dados preenchidos
+            # PROCESSA OS DADOS FORNECIDOS # REFORMULAR COM O CÓDIGO DO MATEUS
             for i, dado in enumerate(dados, start=1):
                 print(f"Dado {i}: {dado}")
 
@@ -88,11 +88,12 @@ class ControladorDeCaptura:
         if not (self.mensagem_erro and self.mensagem_erro.winfo_exists()):  # Evita múltiplas janelas de erro
             self.mensagem_erro = ctk.CTkToplevel(self.window)
             self.mensagem_erro.title("Erro")
-            self.mensagem_erro.geometry("300x100")
+            self.mensagem_erro.geometry("400x150")
+            # impedindo que o usuário interaja com a janela principal até que feche a janela de erro.
             self.mensagem_erro.transient(self.window)  # Mantém a janela de erro em primeiro plano
             self.mensagem_erro.grab_set()  # Torna a janela modal
 
-            label_erro = ctk.CTkLabel(self.mensagem_erro, text=mensagem, text_color="red")
+            label_erro = ctk.CTkLabel(self.mensagem_erro, text=mensagem, text_color="red") # Abre uma nova janela
             label_erro.pack(pady=20)
             botao_ok = ctk.CTkButton(self.mensagem_erro, text="OK", command=self.mensagem_erro.destroy)
             botao_ok.pack(pady=10)
@@ -107,11 +108,12 @@ Aplicacao()
 # criar classes só para capturar as informações - formulário (EM ANDAMENTO) (ok)
 # se estiver faltando alguma informações, impedir que o botão retorne algo (EM ANDAMENTO) (ok)
 # 1 botão de enviar somente! (EM ANDAMENTO) (ok)
+# criar caixas de dialogo que salve as informações do usuário (ok)
 
+# reformular tamanho 
 # criar janela só para os inputs das informações
 # janela - resultado (Botão enviar retornando uma janela com os resultados) (EM ANDAMENTO)
 # Entry
-# criara caixas de dialogo que salve as informações do usuário
 # adicionar funcionalidade as botões/caixa de entrada (retornar algo) - if else (??)
 # fazer botão ENTER funcionar
 # informações retornadas aparecerem na tela
